@@ -1,0 +1,42 @@
+Define nj()=
+Prgm
+  Local p1,p2
+  p1:=randInt(1,10)
+  p2:=randInt(1,10)
+  Local win
+  win:=0
+  Lbl p1l
+    Disp "p1:",p1
+    Disp "p2:",p2
+    Local h
+    Request "Hit?",h
+    If h≠0 Then
+      p1:=p1+randInt(0,10)
+      If p1>21 Then
+        win:=0
+        Goto go
+      EndIf
+      Goto p1l
+    EndIf
+  Lbl p2l
+    Disp "p1:",p1
+    Disp "p2:",p2
+    p2:=p2+randInt(0,10)
+    If p2>21 Then
+      win:=1
+      Goto go
+    EndIf
+    If p2≥p1 Then
+      win:=0
+      Goto go
+    EndIf
+    Goto p2l
+  Lbl go
+    Disp "p1:",p1
+    Disp "p2:",p2
+    If win=0 Then
+      Disp "Game Over!"
+    Else
+      Disp "Win!"
+    EndIf
+EndPrgm
